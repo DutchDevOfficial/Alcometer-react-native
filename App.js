@@ -39,6 +39,20 @@ export default function App() {
     "No Weight has been filled in",
   );
 
+  const GetResultColor = () => {
+    let color;
+    if (result === 0) {
+        color = '';
+    } else if (result >= 0 && result < 0.5) {
+        color = 'green';
+    } else if (result >= 0.5 && result < 1) {
+        color = 'yellow';
+    } else if (result >= 1) {
+        color = 'red';
+    }
+    return color;
+};
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
