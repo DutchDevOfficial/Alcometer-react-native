@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput,Button, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 //import RadioForm from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
@@ -21,15 +21,15 @@ export default function App() {
       result = grams / (weight * 0.6);
     }
 
-    // error protection
+    // No negative results
     if(result < 0) { return setResult(0)}
 
     setResult(result);
   }
 
   return (
-
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
       <Text style={styles.title}>Alcometer</Text>
 
       <Text style={styles.text}>Weight</Text>
@@ -73,7 +73,14 @@ export default function App() {
       <Text style={styles.result}>{result.toFixed(2)}</Text>
 
       <Button title='CALCULATE' onPress={calculate}></Button>
-    </View>
+
+
+
+
+
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -90,27 +97,32 @@ const styles = StyleSheet.create({
     marginTop:10,
     fontSize:40,
     fontWeight:"bold",
+    textAlign:'center'
   },
   title:{
     color: 'blue',
     fontSize:40,
-    marginBottom:20
+    marginBottom:20,
+    textAlign:'center'
   },
   text: {
-    textAlign:'left',
     fontStyle:'normal',
-    alignItems: 'center',
-    justifyContent: 'center',
     fontWeight:"bold",
-    width: 300,
   },
   picker: {
     marginVertical: 10,
-    width: 300,
-    borderWidth: 1,
-    borderColor: "#666",
+    flex: 1
   },
   field:{
     width: 300,
-  }
+  },
+
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+  },
+  scrollView: {
+    marginHorizontal: 20,
+    marginTop:20
+  },
 });
