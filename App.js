@@ -43,11 +43,11 @@ export default function App() {
     let color;
     if (result === 0) {
         color = '';
-    } else if (result >= 0 && result < 0.5) {
+    } else if (result >= 0 && result < 0.03) {
         color = 'green';
-    } else if (result >= 0.5 && result < 1) {
+    } else if (result >= 0.03 && result < 0.09) {
         color = 'yellow';
-    } else if (result >= 1) {
+    } else if (result >= 0.09) {
         color = 'red';
     }
     return color;
