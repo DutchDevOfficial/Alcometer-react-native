@@ -2,19 +2,21 @@ import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, Sta
 //import RadioForm from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
+import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function App() {
 
-  const [weight, setWeight] = useState("")
-  const [bottles, setBottles] = useState(1)
-  const [time, setTime] = useState(1)
-  const [gender, setGender] = useState("male")
-  const [result, setResult] = useState(0.00)
+  const [weight, setWeight] = useState("");
+  const [bottles, setBottles] = useState(1);
+  const [time, setTime] = useState(1);
+  const [gender, setGender] = useState("male");
+  const [result, setResult] = useState(0.00);
+
+  const [resultColor, setResultColor] = useState("grey");
 
   function calculate() {
-    const grams = ((bottles * 0.33) * 8 * 4.5) - ((weight / 10) * time)
+    const grams = ((bottles * 0.33) * 8 * 4.5) - ((weight / 10) * time);
     let result = null;
-
 
     // alert
     if(weight === ""){
@@ -28,9 +30,12 @@ export default function App() {
     }
 
     // No negative results
-    if(result < 0) { return setResult(0)}
+    if(result < 0) { 
+      result = 0;
+    }
 
     setResult(result);
+    setResultColor(GetResultColor(result));
   }
 
   const NoWeightAlert = () =>
@@ -39,18 +44,19 @@ export default function App() {
     "No Weight has been filled in",
   );
 
-  const GetResultColor = () => {
+  const GetResultColor = (input) => {
     let color;
-    if (result === 0) {
-        color = '';
-    } else if (result >= 0 && result < 0.03) {
-        color = 'green';
-    } else if (result >= 0.03 && result < 0.09) {
-        color = 'yellow';
-    } else if (result >= 0.09) {
-        color = 'red';
+    if (input === 0) {
+      color = 'green';
+    } else if (input >= 0 && input < 0.03) {
+      color = 'green';
+    } else if (input >= 0.03 && input < 0.09) {
+      color = 'yellow';
+    } else if (input >= 0.09) {
+      color = 'red';
     }
-    return color;
+    console.log("changed color to " + color);
+    return(color);
 };
 
   return (
@@ -96,7 +102,8 @@ export default function App() {
       <Text style={styles.text}>Gender</Text>
 
 
-      <Text style={styles.result}>{result.toFixed(2)}</Text>
+      <Text style={[styles.result, styles[`STATUS_${resultColor}`]]}>{result.toFixed(2)}</Text>
+      <Text>{resultColor}</Text>
 
       <Button title='CALCULATE' onPress={calculate}></Button>
 
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   result: {
-    color:'yellow',
+
     marginBottom: 10,
     marginTop:10,
     fontSize:40,
@@ -151,4 +158,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop:20
   },
+  STATUS_green: {
+    color: 'green'
+  },
+  STATUS_yellow: {
+    color: 'yellow'
+  },
+  STATUS_red: {
+    color: 'red'
+  }
 });
