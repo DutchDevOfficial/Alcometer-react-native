@@ -5,8 +5,8 @@ import React, {useState} from 'react';
 
 export default function App() {
 
-   const [weight, setWeight] = useState()
-  const [bottles, setBottles] = useState()
+   const [weight, setWeight] = useState("89")
+  const [bottles, setBottles] = useState(1)
   const [time, setTime] = useState(1)
   const [gender, setGender] = useState("male")
   const [result, setResult] = useState(0.00)
@@ -32,7 +32,7 @@ export default function App() {
       <Text style={styles.title}>Alcometer</Text>
 
       <Text style={styles.text}>Weight</Text>
-      <TextInput style={styles.field} value={weight} onChangeText={text => setWeight(text)} />
+      <TextInput style={styles.field} value={weight} onChangeText={text => setWeight(text)} keyboardType="numeric"/>
 
 
       <Text style={styles.text}>Bottles</Text>
@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
     color:'yellow',
     marginBottom: 10,
     marginTop:10,
-    fontSize:40
+    fontSize:40,
+    fontWeight:"bold",
   },
   title:{
     color: 'blue',
