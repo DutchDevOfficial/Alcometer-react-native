@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar,  Alert  } from 'react-native';
 //import RadioForm from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 
 export default function App() {
 
-  const [weight, setWeight] = useState("89")
+  const [weight, setWeight] = useState("")
   const [bottles, setBottles] = useState(1)
   const [time, setTime] = useState(1)
   const [gender, setGender] = useState("male")
@@ -14,6 +14,12 @@ export default function App() {
   function calculate() {
     const grams = ((bottles * 0.33) * 8 * 4.5) - ((weight / 10) * time)
     let result = null;
+
+
+    // alert
+    if(weight === ""){
+      NoWeightAlert();
+    }
 
     if(gender === "male") {
       result = grams / (weight * 0.7);
@@ -26,6 +32,12 @@ export default function App() {
 
     setResult(result);
   }
+
+  const NoWeightAlert = () =>
+  Alert.alert(
+    "No Weight",
+    "No Weight has been filled in",
+  );
 
   return (
     <SafeAreaView style={styles.container}>
