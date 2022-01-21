@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, TextInput,Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput,Button, SafeAreaView} from 'react-native';
 //import RadioForm from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 
 export default function App() {
 
-   const [weight, setWeight] = useState("89")
+  const [weight, setWeight] = useState("89")
   const [bottles, setBottles] = useState(1)
   const [time, setTime] = useState(1)
   const [gender, setGender] = useState("male")
@@ -15,19 +15,20 @@ export default function App() {
     const grams = ((bottles * 0.33) * 8 * 4.5) - ((weight / 10) * time)
     let result = null;
 
-
     if(gender === "male") {
       result = grams / (weight * 0.7);
     } else {
       result = grams / (weight * 0.6);
     }
 
+    // error protection
     if(result < 0) { return setResult(0)}
 
     setResult(result);
   }
 
   return (
+
     <View style={styles.container}>
       <Text style={styles.title}>Alcometer</Text>
 
