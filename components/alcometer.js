@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar,  Alert  } from 'react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, {RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import styles from '../style/style';
+import Radiobutton from '../components/radiobuttons';
 
 
 export default function Alcometer() {
@@ -15,10 +16,22 @@ export default function Alcometer() {
 
   const [resultColor, setResultColor] = useState("grey");
 
-  var radio_props = [
-    {label: 'Male', value: 'male' },
-    {label: 'Female', value: 'female' }
-  ];
+//   OLD RadioButtons
+//   var radio_props = [
+//     {label: 'Male', value: 'male' },
+//     {label: 'Female', value: 'female' }
+//   ];
+
+  const genderlabel=[
+    {
+      label: 'Male',
+      value:'male'
+    },
+    {
+      label: 'Female',
+      value:'female'
+    }]
+
 
   function calculate() {
 
@@ -119,17 +132,31 @@ export default function Alcometer() {
 
 
       <Text style={styles.text}>Gender</Text>
-      <RadioForm
+
+      {/* OLD Radio button */}
+      {/* <RadioForm
         radio_props={radio_props}
         initial={0}
         onPress={(value) => {setGender(value)}}
-      />
+      /> */}
+
+      <View style={styles.radioContainer}>
+        <Radiobutton options={genderlabel}
+            onPress={(value)=> {setGender(value)}}
+            style={{backgroundColor:'#000000'}}
+            borderColor={{borderColor:'#000000'}}
+            />
+      </View>
+        
+       
 
 
       <Text style={[styles.result, styles[`STATUS_${resultColor}`]]}>{result.toFixed(2)}</Text>
       {/* <Text>{resultColor}</Text> */}
 
       <Button title='CALCULATE' onPress={calculate}></Button>
+
+
 
 
       {/* FOOTER */}

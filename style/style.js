@@ -59,5 +59,37 @@ export default StyleSheet.create({
         textAlign: 'center',
         margin: 10,
     },
+
+    radioButtonContainer:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'flex-start',
+        
+        marginBottom: 10,
+        paddingTop:10,
+        paddingRight: 30,
+       
+        
+      },
+      label:{
+        flex: 1,
+        fontSize: 15,
+        textAlign: 'left',
+      },
+      circle:{
+        height:28,
+        width:28,
+        borderRadius:15,
+        borderWidth:2,
+        borderColor:'#000000',
+        alignItems:'center',
+        justifyContent:'center'
+      },
+      checkedCircle:{
+        width:18,
+        height:18,
+        borderRadius:7,
+        backgroundColor:'#000000',
+      }
   });
   
