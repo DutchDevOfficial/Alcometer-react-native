@@ -9,7 +9,6 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },
     result: {
-  
       marginBottom: 10,
       marginTop:10,
       fontSize:40,
@@ -17,10 +16,11 @@ export default StyleSheet.create({
       textAlign:'center'
     },
     title:{
-      color: 'blue',
+      color: '#6fbbd3',
       fontSize:40,
       marginBottom:20,
-      textAlign:'center'
+      textAlign:'center',
+      fontWeight:"bold",
     },
     text: {
       fontStyle:'normal',
@@ -34,13 +34,13 @@ export default StyleSheet.create({
       width: 300,
     },
   
-    container: {
+    header: {
       flex: 1,
       paddingTop: StatusBar.currentHeight,
     },
     scrollView: {
-      marginHorizontal: 20,
-      marginTop:20
+      marginHorizontal: 0,
+      marginTop:30
     },
     STATUS_green: {
       color: 'green'
@@ -50,6 +50,14 @@ export default StyleSheet.create({
     },
     STATUS_red: {
       color: 'red'
-    }
+    },
+    author: {
+        color: 'grey',
+        fontWeight: 'bold',
+        flex: 1,
+        fontSize: 15,
+        textAlign: 'center',
+        margin: 10,
+    },
   });
   
