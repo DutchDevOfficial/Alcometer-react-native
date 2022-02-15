@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar,  Alert  } from 'react-native';
-//import RadioForm from 'react-native-simple-radio-button';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
@@ -13,6 +13,11 @@ export default function App() {
   const [result, setResult] = useState(0.00);
 
   const [resultColor, setResultColor] = useState("grey");
+
+  var radio_props = [
+    {label: 'param1', value: 0 },
+    {label: 'param2', value: 1 }
+  ];
 
   function calculate() {
     const grams = ((bottles * 0.33) * 8 * 4.5) - ((weight / 10) * time);
@@ -98,6 +103,12 @@ export default function App() {
         <Picker.Item label="4 hours" value="4" />
         <Picker.Item label="5 hours" value="5" />
       </Picker>
+
+      <RadioForm
+        radio_props={radio_props}
+        initial={0}
+        onPress={(value) => {this.setState({value:value})}}
+      />
 
       <Text style={styles.text}>Gender</Text>
 
