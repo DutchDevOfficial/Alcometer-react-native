@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar,  Alert  } from 'react-native';
+import { StyleSheet, StatusBar  } from 'react-native';
 
 
 export default StyleSheet.create({

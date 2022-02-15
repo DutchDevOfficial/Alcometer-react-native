@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, TextInput,Button, SafeAreaView, ScrollView, StatusBar,  Alert  } from 'react-native';
-import RadioForm, {RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { Text, View, TextInput,Button, SafeAreaView, ScrollView, Alert } from 'react-native';
+// OLD RadioButton
+// import RadioForm, {RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import styles from '../style/style';
 import Radiobutton from '../components/radiobuttons';
-
 
 export default function Alcometer() {
 
@@ -148,22 +148,15 @@ export default function Alcometer() {
             />
       </View>
         
-       
-
-
       <Text style={[styles.result, styles[`STATUS_${resultColor}`]]}>{result.toFixed(2)}</Text>
       {/* <Text>{resultColor}</Text> */}
 
       <Button title='CALCULATE' onPress={calculate}></Button>
 
-
-
-
       {/* FOOTER */}
       <View style={styles.footer}>
         <Text style={styles.author}>Author: Wimme De Gendt</Text>  
       </View>  
-
 
       </ScrollView>
     </SafeAreaView>
